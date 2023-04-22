@@ -37,10 +37,9 @@ class TaskController{
 
     atualizarTarefa(req, res){
         const { id } = req.params
-        const {tarefa} = req.body
-        const {descricao} = req.body
+        const {tarefa, descricao} = req.body
         
-        database.where({id:id}).update({tarefa:tarefa}).update({descricao:descricao}).table("tasks").then(data=>{
+        database.where({id:id}).update({tarefa:tarefa, descricao:descricao}).table("tasks").then(data=>{
             res.json({message:"Tarefa atualizada com sucesso"})
         }).catch(error=>{
             res.json(error)
